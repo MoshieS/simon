@@ -13,14 +13,24 @@ var gamePattern = [];
 var userChosenColor = [];
 var delay = 4000;
 
-alert("welcome to the simon game");
+ $(document).on("keypress", function(){
+ $("h1").text("Level 0");
+ setTimeout(function () {
+   pushy();
+ }, 800);
+
+}
+);
+
+
+
 
 // gamePattern
 
-$(document).on("keypress", function() {
-    $("h1").text("Level 0");
-    pushy();
-})
+// $(document).on("keypress", function() {
+//     $("h1").text("Level 0");
+//     pushy();
+// })
 // random num till for maker
 function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 3);
@@ -47,8 +57,14 @@ function pushy() {
         if (yes == 0) {
           push();
         } else {
-            $("h1").text("Game over ");
+            $("h1").text("Game over press any key to restart");
+            $("body").addClass("game-over");
+            setTimeout(function(){
+              $("body").removeClass("game-over");
+            }
+        , 200  )
             wrong.play();
+            startOver();
         }
     }, delay);
 
@@ -99,4 +115,14 @@ $("#yellow").on("click", function() {
     userChosenColor.push("yellow");
     yellowa.play();
 })
+
+function startOver() {
+  level = 0;
+ userChosenColor = [];
+ gamePattern = [];
+ delay = 4000;
+yes = 0;
+
+
+}
 // $("#" + rand1).fadeOut(310).fadeIn(300);
