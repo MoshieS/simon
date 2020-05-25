@@ -16,6 +16,7 @@ var delay = 4000;
  $(document).on("keypress", function(){
  $("h1").text("Level 0");
  setTimeout(function () {
+   startOver();
    pushy();
  }, 800);
 
@@ -33,7 +34,7 @@ var delay = 4000;
 // })
 // random num till for maker
 function nextSequence() {
-    var randomNumber = Math.floor(Math.random() * 3);
+    var randomNumber = Math.floor(Math.random() * 4);
     return (randomNumber);
 }
 
